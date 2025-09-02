@@ -1,0 +1,63 @@
+# hydra-tracker config
+#
+# Copy to one of:
+#   Linux / macOS : ~/.config/hydra-tracker/config.toml
+#   Windows       : %APPDATA%\hydra-tracker\config.toml
+# Or pass via `--config <path>`.
+
+[general]
+# Auto-refresh interval in seconds. 0 disables auto-refresh.
+refresh_interval = 60
+# Fiat currency for value display (coingecko vs_currency).
+currency = "usd"
+# Hide tokens whose USD value is below this threshold (reduces dust noise).
+dust_threshold = 0.50
+# Where to persist historical snapshots for the PnL sparkline.
+# Leave blank to use the platform data directory.
+history_path = ""
+
+[rpc.solana]
+# Helius supports both JSON-RPC and the DAS (Digital Asset Standard) API
+# used to list fungible + NFT holdings in one call.
+url = "https://mainnet.helius-rpc.com/?api-key=YOUR_HELIUS_KEY"
+
+[rpc.ethereum]
+url = "https://eth-mainnet.g.alchemy.com/v2/YOUR_ALCHEMY_KEY"
+
+[rpc.base]
+url = "https://base-mainnet.g.alchemy.com/v2/YOUR_ALCHEMY_KEY"
+
+[rpc.arbitrum]
+url = "https://arb-mainnet.g.alchemy.com/v2/YOUR_ALCHEMY_KEY"
+
+[pricing]
+# CoinGecko API key is optional; the public endpoint works without one but is rate-limited.
+coingecko_api_key = ""
+# Jupiter price API is used for Solana SPL tokens; no key required.
+# DexScreener is used as a fallback for tokens missing from CoinGecko/Jupiter.
+
+# One entry per wallet. `chain` is one of: solana, ethereum, base, arbitrum.
+[[wallets]]
+label   = "main-sol"
+chain   = "solana"
+address = "5Q544fKrFoe6tsEbD7S8EmxGTJYAKtTVhAW5Q5pge4j1"
+
+[[wallets]]
+label   = "trading-sol"
+chain   = "solana"
+address = "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU"
+
+[[wallets]]
+label   = "eth-cold"
+chain   = "ethereum"
+address = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+
+[[wallets]]
+label   = "base-hot"
+chain   = "base"
+address = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+
+[[wallets]]
+label   = "arb-farming"
+chain   = "arbitrum"
+address = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"

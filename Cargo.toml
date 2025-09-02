@@ -1,0 +1,47 @@
+[package]
+name = "hydra-tracker"
+version = "0.1.0"
+edition = "2021"
+authors = ["hydra-tracker contributors"]
+description = "Cross-chain crypto portfolio tracker for the terminal"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/yourname/hydra-tracker"
+readme = "README.md"
+keywords = ["crypto", "portfolio", "tui", "solana", "ethereum"]
+categories = ["command-line-utilities", "visualization"]
+
+[[bin]]
+name = "hydra"
+path = "src/main.rs"
+
+[dependencies]
+ratatui = "0.28"
+crossterm = "0.28"
+tokio = { version = "1.40", features = ["full"] }
+reqwest = { version = "0.12", features = ["json", "rustls-tls"], default-features = false }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+anyhow = "1"
+thiserror = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing-appender = "0.2"
+directories = "5"
+clap = { version = "4", features = ["derive"] }
+chrono = { version = "0.4", features = ["serde"] }
+rust_decimal = { version = "1", features = ["serde-with-str"] }
+rust_decimal_macros = "1"
+futures = "0.3"
+tokio-util = "0.7"
+csv = "1"
+itertools = "0.13"
+bs58 = "0.5"
+hex = "0.4"
+url = "2"
+parking_lot = "0.12"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
